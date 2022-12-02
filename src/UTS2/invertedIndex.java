@@ -16,7 +16,7 @@ import java.io.*;
  */
 public class invertedIndex<E> extends LinkedList<E> {
     
-    
+     
     private LinkedListOrderedUnique<Term> termList;
 
     public invertedIndex() {
@@ -64,21 +64,27 @@ public class invertedIndex<E> extends LinkedList<E> {
             
     }
         public LinkedList Intersect(String k1, String k2){
-            Document doc = new Document();
-            ListIterator list1 = this.listIterator();
-            ListIterator list2 = this.listIterator();
+//            Document doc = new Document();
+           
             
              LinkedList hasil = new LinkedList();
              LinkedList kata1 = search(k1);
              LinkedList kata2 = search (k2);
              
+              ListIterator list1 = kata1.listIterator();
+            ListIterator list2 = kata2.listIterator();
+            
              while (list1.hasNext() && list2.hasNext()){
                  String buat1 = (String)list1.next();
                  String buat2 = (String)list2.next();
+                 
                  if (buat1.compareTo(buat2)> 0){
-                     hasil.add(buat1);
-                 }else if(buat1.compareTo(buat2)== 0){
+                     
+                    // hasil.add(buat2);
                      list1.previous();
+                     
+                 }else if(buat1.compareTo(buat2)== 0){
+                    hasil.add(buat1);
                      
                  }else {
                      list2.previous();

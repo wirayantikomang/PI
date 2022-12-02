@@ -42,7 +42,7 @@ public class Term implements Comparable{
     @Override
     public String toString(){
         String temp = term + " => ";
-        temp = temp + documentList.toString();
+        temp = temp + documentList.toString()+"\n";
         return temp;
     }
    

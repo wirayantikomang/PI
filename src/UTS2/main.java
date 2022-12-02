@@ -23,30 +23,31 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
- 
-      invertedIndex coba = new invertedIndex();
-
-        String path ="C:\\Users\\ASUS\\Downloads\\Koleksi\\Koleksi";
+        
+        invertedIndex coba = new invertedIndex();
+        
+        String path = "C:\\Users\\ASUS\\Downloads\\Koleksi\\Koleksi";
         Scanner sc;
         String directory[];
-
+        
         File name = new File(path);
-
+        
         if (name.exists()) {
             directory = name.list();
-
+            
             for (String directoryName : directory) {
-
+                
                 try {
                     sc = new Scanner(new File(name.getAbsolutePath() + "\\" + directoryName));
-
+                    
                     try {
                         while (sc.hasNext()) {
                             String sentence = sc.nextLine();
                             String[] tokens = sentence.split(" ");
                             for (String token : tokens) {
                                 coba.add(token, directoryName);
-                                System.out.println(directoryName + " " + token);
+
+//                                System.out.println(directoryName + " " + token);
                             }
                         }
                     } catch (NoSuchElementException elementException) {
@@ -66,19 +67,26 @@ public class main {
         } else {
             System.out.printf("%s %s", path, "does not exist");
         }
+        System.out.println(coba.toString());
+        
         System.out.println("");
         Scanner pd = new Scanner(System.in);
         System.out.print("Masukan kata 1: ");
         String kata1 = pd.nextLine();
-       
+        System.out.print("Masukan kata 2: ");
+        String kata2 = pd.nextLine();
+        
         try {
+//            System.out.println(coba);
             System.out.println("Kata " + kata1 + " terdapat pada dokumen" + coba.search(kata1));
+            System.out.println("Kata " + kata2 + " terdapat pada dokumen" + coba.search(kata2));
+            System.out.println("Kata " + kata1 + " dan kata " + kata2 + " Terdapat pada dokumen " + coba.Intersect(kata1, kata2));
         } catch (NullPointerException e) {
             System.out.println("Kata " + kata1 + " tidak ditemukan pada dokumen");
         }
-
+        
     }
-
+    
 }
 //        invertedIndex cobaList;
 //        
@@ -105,13 +113,9 @@ public class main {
 //            System.out.println("Kata Tidak Ditemukan");
 //        }
 //        
-        
 
 //
 //        System.out.println(cobaList);
 //        System.out.println("");
 //        cobaList.searchTerm("pada");
-        
-    }
 
-}

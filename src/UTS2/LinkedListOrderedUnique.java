@@ -15,6 +15,7 @@ import java.util.ListIterator;
  */
 public class LinkedListOrderedUnique<E> extends LinkedList<E> {
 
+    
     public boolean addSort(E e) {
         ListIterator<E> iterator = this.listIterator();
         while (iterator.hasNext()) {
